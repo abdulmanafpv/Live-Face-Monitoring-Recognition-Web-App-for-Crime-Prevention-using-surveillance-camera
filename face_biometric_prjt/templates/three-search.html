@@ -1,0 +1,335 @@
+{% load static %}
+<html>
+<head>
+  <title>Face Recognition system</title>
+<!--    <meta http-equiv="refresh" content="20" />-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <style>
+  #id_gender
+  {
+      margin-left: 12px;
+    width: 200px;
+  }
+  .navbar-dark .navbar-nav .nav-link
+  {
+  color:white;
+  }
+    @font-face {
+  font-family: acme;
+  src: url('static/font/Acme-Regular.ttf');
+}
+body
+{
+font-family:acme;
+background-color:#3e3c3c;
+}
+
+                .image-link {
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in;
+}
+.mfp-with-zoom .mfp-container,
+.mfp-with-zoom.mfp-bg {
+    opacity: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.mfp-with-zoom.mfp-ready .mfp-container {
+        opacity: 1;
+}
+.mfp-with-zoom.mfp-ready.mfp-bg {
+        opacity: 0.8;
+}
+
+
+
+.page-item li
+{
+padding-left:20px;
+}
+table th , table td{
+    text-align: center;
+}
+
+table tr:nth-child(even){
+    background-color: #e4e3e3
+}
+
+th {
+  background: #333;
+  color: #fff;
+}
+
+.pagination {
+  margin: 0;
+}
+
+.pagination li:hover{
+    cursor: pointer;
+}
+
+.header_wrap {
+  padding:30px 0;
+}
+.num_rows {
+  width: 20%;
+  float:left;
+}
+.tb_search{
+  width: 20%;
+  float:right;
+}
+.pagination-container {
+  width: 70%;
+  float:left;
+}
+
+.rows_count {
+  width: 20%;
+  float:right;
+  text-align:right;
+  color: #999;
+}
+.tb_search {
+    width: 50%;
+    float: right;
+}
+
+
+
+              .image-link {
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in;
+}
+.mfp-with-zoom .mfp-container,
+.mfp-with-zoom.mfp-bg {
+    opacity: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.mfp-with-zoom.mfp-ready .mfp-container {
+        opacity: 1;
+}
+.mfp-with-zoom.mfp-ready.mfp-bg {
+        opacity: 0.8;
+}
+
+.mfp-title {
+  text-align: center;
+  padding: 6px 0;
+}
+
+#section-wapper
+{
+ background: linear-gradient(105deg, white, transparent);
+padding:25px;
+}
+#pagination li {
+    margin-left: 21px;
+}
+
+#pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    color: #fff;
+    font-size: 18px;
+}
+
+#section
+{
+   background: linear-gradient(118deg, black, transparent);
+
+}
+.header_wrap
+{
+    background: linear-gradient(182deg, black, transparent);
+      padding:5px;
+
+      height:136px;
+}
+.register
+{
+    background: linear-gradient(321deg, black, transparent);
+}
+.frame
+{
+height:750px;
+}
+.img-thumbnail {
+
+    background-color: #000;
+    border:1px;
+
+}
+.box-form
+{
+display:flex;
+    list-style-type: none;
+}
+ table td {
+    text-align: center;
+    color: #ffff;
+}
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    background: linear-gradient(176deg, #212529, #040404c4) !important;
+}
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 20px;
+}
+  </style>
+</head>
+<body>
+<!--navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="static/img/logo.jpg" width="55px" height="55px"><span class="ms-4">Face Recognition System </span> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}"><i class="fa fas fa-duotone fa-house-user"></i><span class="ms-2">HOME</span></a></li>
+          <li class="nav-item">
+                <a class="nav-link" href="{% url 'unregisterd' %}"><i class="fa fas fa-thin fa-circle-user"></i><span class="ms-2">UNKNOWN</span></a></li>
+           <li class="nav-item">
+                <a class="nav-link" href="{% url 'registerd_people' %}"> <i class="fas fa fa-thin fa-address-card"></i><span class="ms-2">REGISTERD </span></a></li>
+                     <li class="nav-item">
+
+                        <a class="nav-link"  href="{% url 'check_search' %}"><i class="fa fas fa-thin fa-book-reader"></i><span class="ms-2">CHECKING PEOPLE </span>
+                </a>
+                    </li>
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!---->
+<section class="p-5">
+    <div class="container">
+          <div class="row">
+                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+
+              <form action="{% url 'three_search' %}" method="post">
+                  {% csrf_token %}
+                        <input id="search_submit" class="form-control" type="date" name="q">
+                 </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                       <div class="float-left">
+                          <input type="submit" id="searchsubmit" class="btn btn-primary" value="submit">
+                       </div>
+                  </div>
+              </form>
+          </div>
+    </div>
+</section>
+
+
+
+
+<section>
+    <div class="container">
+           <div class="row">
+                  <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                        <table class=" table  table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Date & Time</th>
+                                        <th class="text-center">Photo</th>
+                                        <th class="text-center">Download</th>
+                                    </tr>
+                                </thead>
+                                {% for i in result %}
+                                 <tbody>
+
+                                          <tr>
+                                            <td class="text-center fw-bold m-5 ">{{i.date_time}}</td>
+
+                                            <td class="text-center">
+                                                <div class="magnific-img">
+                                                    {% if i.photo == '' %}
+                                                    <p>None</p>
+                                                    {% else %}
+                                                  <a class="image-popup-vertical-fit" href="{{i.image.url}}" title="10.jpg">
+                                                   <img src="{{i.image.url}}" width="350px" height="200px" alt="10.jpg">
+                                                      {% endif %}
+
+                                                  </a>
+                                               </div>
+                                            </td>
+                                              <td>
+                                                  {% if i.photo == '' %}
+                                                  <p>None</p>
+                                                  {% else %}
+                                                  <div class="m-5">
+                                                     <a class="btn btn-primary" href="{{i.image.url}}" download>Download</a>
+
+                                                  </div>
+                                                  {% endif %}
+                                              </td>
+                                          </tr>
+                                 </tbody>
+                                {% endfor %}
+                        </table>
+                  </div>
+           </div>
+    </div>
+</section>
+
+
+<script>
+    $(document).ready(function(){
+$('.image-popup-vertical-fit').magnificPopup({
+  type: 'image',
+  mainClass: 'mfp-with-zoom',
+  gallery:{
+      enabled:true
+    },
+
+  zoom: {
+    enabled: true,
+
+    duration: 300, // duration of the effect, in milliseconds
+    easing: 'ease-in-out', // CSS transition easing function
+
+    opener: function(openerElement) {
+
+      return openerElement.is('img') ? openerElement : openerElement.find('img');
+  }
+}
+
+});
+
+});
+</script>
+
+</body>
+</html>
