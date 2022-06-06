@@ -74,6 +74,8 @@ i = 0
 class VideoCamera(object):
     def __init__(self):
         self.video = cv2.VideoCapture(0)
+        # self.video = cv2.VideoCapture('192.168.1.2')
+
         # self.video = cv2.VideoCapture('rtsp://admin:RWHOJO@192.168.1.18:h264_stream')
 
         self.buf = [[]] * buf_length
@@ -160,6 +162,7 @@ class VideoCamera(object):
             # p=os.path.sep.join(['face_biometric_app/image', pht])
             p1= os.path.sep.join(['face_biometric_app/image',pht])
             p2= os.path.sep.join(['media/face_biometric_app/image',pht])
+
             # p=os.path.sep.join(['face_biometric_app/image', "detected.png".replace(":", '')])
 
             # cv2.imwrite(saving(), frame)

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import StreamingHttpResponse
 from face_biometric_app.camera import VideoCamera
 from face_biometric_app.models import Employee, Detected, unreg, Checking, Checking_One, Checking_Two, Checking_Three, Checking_Four, Checking_Five
@@ -122,8 +122,29 @@ def training(request):
 
 def registerd_people(request):
 	result = Employee.objects.all().order_by('-id')
-
 	return render(request,'registerd_people.html', {'result':result})
+
+
+
+def registered_people_edit(request,reg_id):
+	obj = Employee.objects.filter(id=reg_id).first()
+	if request.method == 'POST':
+		form = EmployeeForm(request.POST,request.FILES,instance=obj)
+		if form.is_valid():
+			form.save()
+			return redirect('registerd_people')
+	else:
+		obj = Employee.objects.filter(id=reg_id).first()
+		form = EmployeeForm(instance=obj)
+	return render(request,'edit.html',{'form':form})
+
+
+
+def registered_people_delete(request,reg_id):
+	obj = Employee.objects.filter(id=reg_id)
+	obj.delete()
+	return redirect('registerd_people')
+
 
 
 def unknown_search(request):

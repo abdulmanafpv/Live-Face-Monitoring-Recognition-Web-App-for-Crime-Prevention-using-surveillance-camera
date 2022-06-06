@@ -11,5 +11,5 @@ class EmployeeForm(forms.ModelForm):
             'id': forms.TextInput(attrs={'class':'form-control'}),
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'gender': forms.Select(attrs={'class': 'form-control'}),
-            # 'photo': forms.ImageField()
+            # 'photo': forms.ImageField(attrs={'class': 'form-control-file'}),
         }

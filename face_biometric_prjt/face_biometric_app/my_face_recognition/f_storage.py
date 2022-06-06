@@ -7,7 +7,7 @@ from face_biometric_app.my_face_recognition import f_main
 import cv2
 import numpy as np
 import traceback
-
+import re
 
 def load_images_to_database():
     list_images = os.listdir(cfg.path_images)
@@ -33,6 +33,7 @@ def load_images_to_database():
         else:
             # inserto las nuevas caracteristicas en la base de datos
             new_name = file_name.split(".")[0]
+            new_name=re.split(r'_',new_name)[0]
             if new_name == "":
                 continue
             name.append(new_name)
