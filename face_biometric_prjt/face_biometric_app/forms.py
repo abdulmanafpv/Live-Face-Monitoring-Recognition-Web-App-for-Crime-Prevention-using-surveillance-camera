@@ -8,7 +8,7 @@ class EmployeeForm(forms.ModelForm):
         model = Employee
         fields = '__all__'
         widgets = {
-            'id': forms.TextInput(attrs={'class':'form-control'}),
+            'id': forms.NumberInput(attrs={'class':'form-control'}),
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'gender': forms.Select(attrs={'class': 'form-control'}),
             # 'photo': forms.ImageField(attrs={'class': 'form-control-file'}),

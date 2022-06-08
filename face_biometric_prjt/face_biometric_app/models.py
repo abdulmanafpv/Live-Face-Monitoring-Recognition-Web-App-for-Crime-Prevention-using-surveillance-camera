@@ -9,11 +9,11 @@ import base64
 sex_choice = (
     ('Male', 'Male'),
     ('Female', 'Female'),
-	('Transgender', 'Transgender')
+	('Other', 'Other')
 )
 
 class Employee(models.Model):
-	id = models.CharField(primary_key=True, max_length=10)
+	id = models.IntegerField(primary_key=True, max_length=10)
 
 	name = models.CharField(max_length=50)
 

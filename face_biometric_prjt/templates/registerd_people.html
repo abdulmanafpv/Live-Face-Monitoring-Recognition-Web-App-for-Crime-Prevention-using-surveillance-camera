@@ -8,6 +8,7 @@
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" >
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="{% static 'css/style.css' %} " rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
      <style>
@@ -202,13 +203,18 @@ display:flex;
     padding-bottom: .5rem;
     background: linear-gradient(176deg, #212529, #040404c4) !important;
 }
+#photo
+{
+width:120px;
+height:120px;
+}
   </style>
 </head>
 <body>
 <!--navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="static/img/logo.jpg" width="55px" height="55px"><span class="ms-4">Face Recognition System </span> </a>
+    <a class="navbar-brand" href="#"><img src="static/img/logo.jpg" width="55px" height="55px"><span class="ms-4"id="head-text">Face Recognition System </span> </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -219,7 +225,7 @@ display:flex;
           <li class="nav-item">
                 <a class="nav-link" href="{% url 'unregisterd' %}"><i class="fa fas fa-thin fa-circle-user"></i><span class="ms-2">UNKNOWN</span></a></li>
            <li class="nav-item">
-                <a class="nav-link" href="{% url 'registerd_people' %}"> <i class="fas fa fa-thin fa-address-card"></i><span class="ms-2">REGISTERD </span></a></li>
+                <a class="nav-link" href="{% url 'registerd_people' %}"> <i class="fas fa fa-thin fa-address-card"></i><span class="ms-2">REGISTERED  </span></a></li>
                      <li class="nav-item">
 
                         <a class="nav-link"  href="{% url 'check_search' %}"><i class="fa fas fa-thin fa-book-reader"></i><span class="ms-2">CHECKING PEOPLE </span>
@@ -236,7 +242,7 @@ display:flex;
        <div class="row">
                   <div class="col-12 col-lg-12 col-md-12 col-sm-12">
                       <div class="text-center">
-                           <a href="{% url 'training' %}" class="btn btn-primary btn-lg">Training</a>
+                           <a href="{% url 'training' %}" class="btn btn-primary btn-lg" id="training">Training</a>
                       </div>
 
                   </div>
@@ -246,7 +252,7 @@ display:flex;
          <div class="container">
               <div class="row">
                   <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12">
-                        <table class="table table-responsive table-bordered">
+                        <table class="table table-responsive table-bordered" id="table_2">
                                <thead>
                                       <tr>
                                           <th  class="text-center">Name</th>
@@ -267,14 +273,14 @@ display:flex;
                                                    <p>None</p>
                                                    {% else %}
                                                   <a class="image-popup-vertical-fit" href="{{i.photo.url}}" title="10.jpg">
-                                                   <img src="{{i.photo.url}}" width="150px" height="100px" alt="10.jpg">
+                                                   <img src="{{i.photo.url}}" id="photo" alt="10.jpg">
                                                   </a>
                                                    {% endif %}
                                                </div>
                                           </td>
                                           <td>
                                                <a href="{% url 'registered_people_edit' i.id %}" class="btn btn-info">Edit <i class="fas fa-edit"></i></a>
-                                              <a href="{% url 'registered_people_delete' i.id %}" class="btn btn-info mx-3">Delete <i class="fa fa-trash" aria-hidden="true"></i></a>
+                                              <a href="{% url 'registered_people_delete' i.id %}" class="btn btn-info mx-3"  id="delete">Delete <i class="fa fa-trash" aria-hidden="true"></i></a>
                                           </td>
                                       </tr>
                                </tbody>

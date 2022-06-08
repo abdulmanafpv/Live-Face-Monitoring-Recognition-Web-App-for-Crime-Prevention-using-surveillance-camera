@@ -41,6 +41,9 @@ def main():
     obj1.save()
 
 
+
+
+
 check_path= 'face_biometric_app/check'
 chck_list=['']
 def check_listing():
@@ -51,6 +54,8 @@ def check_main():
     photo=chck_list[-1]
     obj2= Checking.objects.create(image=photo)
     obj2.save()
+
+
 
 
 check_one_path= 'face_biometric_app/one'
