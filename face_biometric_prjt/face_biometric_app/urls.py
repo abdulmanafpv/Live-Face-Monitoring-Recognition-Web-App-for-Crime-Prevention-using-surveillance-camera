@@ -32,6 +32,8 @@ urlpatterns = [
     path('five_search', views.five_search, name='five_search'),
     path('registered-people-delete/<int:reg_id>/', views.registered_people_delete, name='registered_people_delete'),
     path('edit/<int:reg_id>/', views.registered_people_edit, name='registered_people_edit'),
+    path('ip-cam', views.ip_cam, name='ip_cam'),
+
 
 
 

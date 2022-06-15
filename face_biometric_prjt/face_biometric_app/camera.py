@@ -73,7 +73,9 @@ i = 0
 
 class VideoCamera(object):
     def __init__(self):
-        self.video = cv2.VideoCapture(1)
+        self.video = cv2.VideoCapture(views.ip_check())
+        # self.video = cv2.VideoCapture(0)
+
         # self.video = cv2.VideoCapture('192.168.1.2')
 
         # self.video = cv2.VideoCapture('rtsp://admin:RWHOJO@192.168.1.18:h264_stream')
@@ -83,7 +85,8 @@ class VideoCamera(object):
         self.i = 0
         self.buf_length = 10
         self.known_conf = 6
-        self.resolution = (640, 480)
+        # self.resolution = (640, 480)
+        self.resolution = (240, 320)
         self.fps = 5
         self.codec = cv2.VideoWriter_fourcc(*"XVID")
         # self.codec = cv2.VideoWriter_fourcc(*'MP4V')
@@ -120,6 +123,8 @@ class VideoCamera(object):
         face_names = []
 
         frame = imutils.resize(frame, width=720)
+        # frame = imutils.resize(frame, width=640)
+
 
 
 
@@ -132,7 +137,11 @@ class VideoCamera(object):
 
         end_time = time.time() - star_time
         FPS = 1 / end_time
-        cv2.putText(frame , f"FPS: {round(FPS, 3)}", (10, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 2)
+        # cv2.putText(frame , f"FPS: {round(FPS, 3)}", (10, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 2)
+        cv2.putText(frame , f"FPS: {round(FPS, 3)}", (10, 50), cv2.FONT_HERSHEY_COMPLEX, 0.75, (0, 0, 255), 1)
+
+        # cv2.putText(frame)
+
         print(name(out))
 
         # identify1(frame,name(out),self.buf,self.buf_length,self.known_conf)

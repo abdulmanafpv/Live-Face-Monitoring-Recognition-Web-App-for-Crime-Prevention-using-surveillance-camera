@@ -239,6 +239,22 @@ padding:40px;
 <section class="p-5">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-8 col-lg-8 col-sm-12 col-12">
+
+                <form action="{% url 'ip_cam' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                          <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12 col-12">
+                              <input type="text" class="form-control" name="ip" placeholder="Enter the Camera Ip Address">
+                          </div>
+                        <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12 col-12">
+                              <input type="submit" class="btn btn-primary">
+                          </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
                       <div class="camera" >
                                  <div class="float-end">

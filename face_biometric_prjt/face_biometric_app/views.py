@@ -280,8 +280,8 @@ def checking_four(request):
 	if request.method=='POST':
 		obj=request.POST.get('q')
 		four_lst.append(obj)
-		print(obj)
-		print(four_lst[-1])
+		# print(obj)
+		# print(four_lst[-1])
 	return HttpResponseRedirect(reverse('index'))
 
 def check_four():
@@ -310,8 +310,8 @@ def checking_five(request):
 	if request.method=='POST':
 		obj=request.POST.get('q')
 		five_lst.append(obj)
-		print(obj)
-		print(five_lst[-1])
+		# print(obj)
+		# print(five_lst[-1])
 	return HttpResponseRedirect(reverse('index'))
 
 
@@ -332,6 +332,22 @@ def five_search(request):
 
 def check_search(request):
 	return render(request, 'check.html')
+
+ip_lst=[0]
+
+def ip_cam(request):
+	if request.method == 'POST':
+		ip = request.POST.get('ip')
+		ip_lst.append('rtsp://'+ip)
+		print(ip)
+		return redirect('index')
+	else:
+		return HttpResponse('Error')
+
+
+def ip_check():
+	name_ip = ip_lst[-1]
+	return name_ip
 
 
 
