@@ -5,6 +5,7 @@ import  sys
 from PIL import Image
 from face_biometric_app.models import  unreg,Checking, Checking_One, Checking_Two, Checking_Three, Checking_Four, Checking_Five
 import glob
+from face_biometric_app.models import Detected
 import shutil
 import os
 import face_biometric_app.config as cfg
@@ -179,3 +180,8 @@ def reload():
 
     f_Face_info = reload(f_Face_info)
     return f_Face_info
+
+def img():
+    detected = Detected.objects.all()
+    det= detected.emp_id.order_by('-id')
+    return det

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import StreamingHttpResponse
 from face_biometric_app.camera import VideoCamera
-from face_biometric_app.models import Employee, Detected, unreg, Checking, Checking_One, Checking_Two, Checking_Three, Checking_Four, Checking_Five
-
+from face_biometric_app.models import Employee, Detected, unreg, Checking, Checking_One, Checking_Two, Checking_Three, \
+	Checking_Four, Checking_Five, Upload_image
 from .forms import EmployeeForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -11,6 +11,7 @@ from face_biometric_app.data import  load_images, get_frame,reload
 from face_biometric_app.my_face_recognition import f_main
 from face_biometric_app.data import loading
 from django.db.models import Q
+from face_biometric_app.image import img, delete
 from face_biometric_app.f_Face_info import get_face_info
 import traceback
 import numpy as np
@@ -30,7 +31,7 @@ def index(request):
 	if date is not None:
 		date_formatted = datetime.datetime.strptime(date, "%Y-%m-%d-%s").date()
 	det_list = Detected.objects.filter(time_stamp__date=date_formatted).order_by('time_stamp').reverse()
-	print(det_list)
+	# print(det_list)
 
 	# date_formatted = datetime.datetime.today().date()
 	det_list = Detected.objects.filter(time_stamp__date=date_formatted).order_by('time_stamp').reverse()[:6]
@@ -339,6 +340,7 @@ def ip_cam(request):
 	if request.method == 'POST':
 		ip = request.POST.get('ip')
 		ip_lst.append('rtsp://'+ip)
+		# ip_lst.append(ip)
 		print(ip)
 		return redirect('index')
 	else:
@@ -348,6 +350,27 @@ def ip_cam(request):
 def ip_check():
 	name_ip = ip_lst[-1]
 	return name_ip
+
+def images_upload(request):
+	img=None
+	if request.method == "POST":
+		print(request.POST)
+		img = Upload_image.objects.create(image=request.FILES.get('img'))
+		img.save()
+	return render(request, 'upload.html',{'img':img})
+
+
+def finding(request):
+	fnd = img()
+	print(fnd)
+	result = Employee.objects.filter(name=fnd)
+	return render(request, 'upload.html',{'img':fnd,'result':result})
+
+
+def cancel(request):
+	cncl=delete()
+	return render(request, 'upload.html', {'cncl': cncl})
+
 
 
 

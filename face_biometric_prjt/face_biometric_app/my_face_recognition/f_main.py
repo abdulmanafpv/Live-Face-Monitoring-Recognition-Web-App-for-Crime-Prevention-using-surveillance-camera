@@ -90,7 +90,6 @@ def bounding_box(img, box, match_name=[]):
             cv2.putText(img, match_name[i], (x0, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
     return img
 
-
 if __name__ == "__main__":
     import argparse
 

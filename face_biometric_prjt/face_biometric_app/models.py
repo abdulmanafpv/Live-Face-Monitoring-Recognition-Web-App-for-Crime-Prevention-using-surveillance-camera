@@ -91,5 +91,7 @@ class Checking_Five(models.Model):
 	image=models.ImageField(upload_to='face_biometric_app/five', blank=True, null=True)
 	date_time=models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
-
+class Upload_image(models.Model):
+	image=models.ImageField(upload_to='face_biometric_app/upload', blank=True, null=True)
+	date_time = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 

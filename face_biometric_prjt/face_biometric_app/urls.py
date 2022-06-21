@@ -33,15 +33,8 @@ urlpatterns = [
     path('registered-people-delete/<int:reg_id>/', views.registered_people_delete, name='registered_people_delete'),
     path('edit/<int:reg_id>/', views.registered_people_edit, name='registered_people_edit'),
     path('ip-cam', views.ip_cam, name='ip_cam'),
-
-
-
-
-
-
-
-
-
-
+    path('images_upload', views.images_upload, name='images_upload'),
+    path('finding', views.finding, name='finding'),
+    path('cancel', views.cancel, name='cancel'),
 
 ]

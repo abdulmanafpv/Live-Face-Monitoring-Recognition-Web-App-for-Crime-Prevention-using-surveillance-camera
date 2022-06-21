@@ -14,6 +14,7 @@ from .models import unreg
 
 import numpy as np
 from face_biometric_app .data import main
+from face_biometric_app .data import img
 from face_biometric_app .data import lst,check_listing,check_main,check_one,check_main_one
 from face_biometric_app .data import check_two, check_main_two, check_three, check_main_three, check_four, check_main_four
 from face_biometric_app .data import check_five, check_main_five
@@ -142,7 +143,7 @@ class VideoCamera(object):
 
         # cv2.putText(frame)
 
-        print(name(out))
+        # print(name(out))
 
         # identify1(frame,name(out),self.buf,self.buf_length,self.known_conf)
         identify1(frame,name(out))
@@ -239,6 +240,10 @@ class VideoCamera(object):
             cv2.imwrite(s7, frame)
             check_five()
             check_main_five()
+
+
+
+
 
 
 
