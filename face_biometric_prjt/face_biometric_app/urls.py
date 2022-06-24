@@ -36,5 +36,7 @@ urlpatterns = [
     path('images_upload', views.images_upload, name='images_upload'),
     path('finding', views.finding, name='finding'),
     path('cancel', views.cancel, name='cancel'),
+    path('proofing', views.proofing, name='proofing'),
+    path('proof_search', views.proof_search, name='proof_search'),
 
 ]

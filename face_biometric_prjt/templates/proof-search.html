@@ -11,13 +11,7 @@
       <link href="{% static 'css/style.css' %} " rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-      <style>
-      #photo
-      {
-      width:120px;
-      height:120px;
-      }
+     <style>
   #id_gender
   {
       margin-left: 12px;
@@ -215,7 +209,7 @@ display:flex;
 <!--navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="static/img/logo.jpg" width="55px" height="55px"><span class="ms-4" id="head-text">Face Recognition System </span> </a>
+    <a class="navbar-brand" href="#"><img src="static/img/logo.jpg" width="55px" height="55px"><span class="ms-4">Face Recognition System </span> </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -236,25 +230,26 @@ display:flex;
                         <a class="nav-link"  href="{% url 'check_search' %}"><i class="fa fas fa-thin fa-book-reader"></i><span class="ms-2">CHECKING PEOPLE </span>
                 </a>
                     </li>
+
+
       </ul>
     </div>
   </div>
 </nav>
 
 <!---->
-
 <section class="p-5">
     <div class="container">
           <div class="row">
-
                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                         <form action="{% url 'three_search' %}" method="post">
+
+              <form action="{% url 'proof_search' %}" method="post">
                   {% csrf_token %}
-                        <input id="search_submit" class="form-control" id="form-name1" type="date" name="q">
+                        <input id="search_submit" class="form-control" type="date" name="q">
                  </div>
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                        <div class="float-left">
-                          <input type="submit" id="searchsubmit1" class="btn btn-primary" value="submit">
+                          <input type="submit" id="searchsubmit" class="btn btn-primary" value="submit">
                        </div>
                   </div>
               </form>
@@ -262,7 +257,8 @@ display:flex;
     </div>
 </section>
 
-{% for i in result %}
+
+
 
 <section>
     <div class="container">
@@ -276,32 +272,44 @@ display:flex;
                                         <th class="text-center">Download</th>
                                     </tr>
                                 </thead>
+                                {% for i in result %}
                                  <tbody>
+
                                           <tr>
                                             <td class="text-center fw-bold m-5 ">{{i.date_time}}</td>
 
                                             <td class="text-center">
                                                 <div class="magnific-img">
+                                                    {% if i.image == '' %}
+                                                    <p>None</p>
+                                                    {% else %}
                                                   <a class="image-popup-vertical-fit" href="{{i.image.url}}" title="10.jpg">
-                                                   <img src="{{i.image.url}}" id="photo" alt="10.jpg">
+                                                   <img src="{{i.image.url}}" width="350px" height="200px" alt="10.jpg">
+                                                      {% endif %}
 
                                                   </a>
                                                </div>
                                             </td>
                                               <td>
+                                                  {% if i.image == '' %}
+                                                  <p>None</p>
+                                                  {% else %}
                                                   <div class="m-5">
                                                      <a class="btn btn-primary" href="{{i.image.url}}" download>Download</a>
+
                                                   </div>
+                                                  {% endif %}
                                               </td>
                                           </tr>
                                  </tbody>
+                                {% endfor %}
                         </table>
                   </div>
            </div>
     </div>
 </section>
 
-{% endfor %}
+
 <script>
     $(document).ready(function(){
 $('.image-popup-vertical-fit').magnificPopup({

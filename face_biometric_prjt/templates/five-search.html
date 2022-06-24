@@ -217,6 +217,8 @@ display:flex;
       <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'index' %}"><i class="fa fas fa-duotone fa-house-user"></i><span class="ms-2">HOME</span></a></li>
+                                         <li class="nav-item">
+                <a class="nav-link" href="{% url 'proofing' %}"><i class="fab fa-creative-commons-by"></i><span class="ms-2">PROOFING</span></a></li>
           <li class="nav-item">
                 <a class="nav-link" href="{% url 'unregisterd' %}"><i class="fa fas fa-thin fa-circle-user"></i><span class="ms-2">UNKNOWN</span></a></li>
            <li class="nav-item">
@@ -270,7 +272,7 @@ display:flex;
                                         <th class="text-center">Download</th>
                                     </tr>
                                 </thead>
-                                {% for i in result %}
+                                {% for i in results %}
                                  <tbody>
 
                                           <tr>

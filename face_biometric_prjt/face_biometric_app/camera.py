@@ -14,10 +14,10 @@ from .models import unreg
 
 import numpy as np
 from face_biometric_app .data import main
-from face_biometric_app .data import img
+from face_biometric_app .data import proof
 from face_biometric_app .data import lst,check_listing,check_main,check_one,check_main_one
 from face_biometric_app .data import check_two, check_main_two, check_three, check_main_three, check_four, check_main_four
-from face_biometric_app .data import check_five, check_main_five
+from face_biometric_app .data import check_five, check_main_five, check_proof, check_main_proof
 from face_biometric_app import views
 import face_recognition
 from django.conf import settings
@@ -242,8 +242,17 @@ class VideoCamera(object):
             check_main_five()
 
 
-
-
+        elif name(out) ==  proof(name(out)):
+            now = datetime.datetime.today()
+            pht = "detected{}.jpg".format(str(now).replace(":", ''))
+            # p=os.path.sep.join(['face_biometric_app/image', "detected{}.jpg".format(str(now).replace(":", ''))])
+            # p=os.path.sep.join(['face_biometric_app/image', pht])
+            s11 = os.path.sep.join(['face_biometric_app/proof', pht])
+            s12 = os.path.sep.join(['media/face_biometric_app/proof', pht])
+            cv2.imwrite(s11, frame)
+            cv2.imwrite(s12, frame)
+            check_proof()
+            check_main_proof()
 
 
 

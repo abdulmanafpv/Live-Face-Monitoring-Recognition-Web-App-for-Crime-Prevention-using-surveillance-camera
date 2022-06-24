@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import StreamingHttpResponse
 from face_biometric_app.camera import VideoCamera
 from face_biometric_app.models import Employee, Detected, unreg, Checking, Checking_One, Checking_Two, Checking_Three, \
-	Checking_Four, Checking_Five, Upload_image
+	Checking_Four, Checking_Five, Upload_image, Proof
 from .forms import EmployeeForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -321,15 +321,15 @@ def check_five():
 	return name
 
 def uncheck_five(request):
-	result = Checking_Five.objects.all().order_by('-id')
-	return render(request, 'four.html', {'result': result})
+	res = Checking_Five.objects.all().order_by('-id')
+	return render(request, 'five.html', {'result': res})
 
 def five_search(request):
 	if request.method == 'POST':
 		name = request.POST.get('q')
-		result = Checking_Five.objects.filter(date_time__icontains=name)
+		results = Checking_Five.objects.filter(date_time__icontains=name)
 		# print(result.count())
-	return render(request,'five-search.html',{'result':result})
+	return render(request,'five-search.html',{'result':results})
 
 def check_search(request):
 	return render(request, 'check.html')
@@ -372,9 +372,18 @@ def cancel(request):
 	return render(request, 'upload.html', {'cncl': cncl})
 
 
+def proofing(request):
+
+	result = Proof.objects.all().order_by('-id')
+	return render(request,'proof.html',{'result':result})
 
 
-
+def proof_search(request):
+	if request.method == 'POST':
+		name = request.POST.get('q')
+		result = Proof.objects.filter(date_time__icontains=name).order_by('-id')
+	# print(result.count())
+	return render(request, 'proof-search.html', {'result': result})
 
 
 

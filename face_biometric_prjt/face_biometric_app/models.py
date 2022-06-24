@@ -41,7 +41,9 @@ class Employee(models.Model):
 		except:
 			return 0
 
-
+class Proof(models.Model):
+	image=models.ImageField(upload_to='face_biometric_app/proof', blank=True, null=True)
+	date_time=models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
 class Detected(models.Model):
 	emp_id = models.ForeignKey(Employee, on_delete=models.CASCADE, null=True)

@@ -5,7 +5,7 @@ import  sys
 from PIL import Image
 from face_biometric_app.models import  unreg,Checking, Checking_One, Checking_Two, Checking_Three, Checking_Four, Checking_Five
 import glob
-from face_biometric_app.models import Detected
+from face_biometric_app.models import Detected, Proof,Employee
 import shutil
 import os
 import face_biometric_app.config as cfg
@@ -13,6 +13,7 @@ import cv2
 import numpy as np
 from face_biometric_app.my_face_recognition import f_main
 import imutils
+import datetime
 from face_biometric_app import f_Face_info
 from importlib import reload
 
@@ -185,3 +186,22 @@ def img():
     detected = Detected.objects.all()
     det= detected.emp_id.order_by('-id')
     return det
+
+def proof(name):
+    det=Employee.objects.filter(name=name)
+    for name in det:
+        nme= str(name)
+        return nme
+
+
+proof_path= 'face_biometric_app/proof'
+proof_lst=['']
+
+def check_proof():
+    for image in glob.iglob(f'{proof_path}/*'):
+        proof_lst.append(image)
+
+def check_main_proof():
+    photo=proof_lst[-1]
+    obj= Proof.objects.create(image=photo)
+    obj.save()
