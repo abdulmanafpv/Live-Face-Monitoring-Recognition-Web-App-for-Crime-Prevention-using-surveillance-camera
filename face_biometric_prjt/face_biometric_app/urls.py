@@ -38,5 +38,7 @@ urlpatterns = [
     path('cancel', views.cancel, name='cancel'),
     path('proofing', views.proofing, name='proofing'),
     path('proof_search', views.proof_search, name='proof_search'),
+    path('finding_data', views.finding_data, name='finding_data'),
+
 
 ]

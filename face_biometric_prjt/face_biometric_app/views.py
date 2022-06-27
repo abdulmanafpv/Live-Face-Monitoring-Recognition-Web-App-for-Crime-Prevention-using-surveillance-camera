@@ -3,7 +3,7 @@ from django.http import StreamingHttpResponse
 from face_biometric_app.camera import VideoCamera
 from face_biometric_app.models import Employee, Detected, unreg, Checking, Checking_One, Checking_Two, Checking_Three, \
 	Checking_Four, Checking_Five, Upload_image, Proof
-from .forms import EmployeeForm
+from face_biometric_app.forms import EmployeeForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 import datetime
@@ -366,6 +366,20 @@ def finding(request):
 	result = Employee.objects.filter(name=fnd)
 	return render(request, 'upload.html',{'img':fnd,'result':result})
 
+from django.core.exceptions import ObjectDoesNotExist
+def finding_data(request):
+	name_fnd=img()
+	identity = Employee.objects.filter(name=name_fnd)
+
+	for res in identity:
+		number=res.id
+		print(number)
+		result=Detected.objects.filter(emp_id=number).order_by('-id')
+		return render(request,'finding_data.html',{'result':result})
+
+
+
+
 
 def cancel(request):
 	cncl=delete()
@@ -373,7 +387,6 @@ def cancel(request):
 
 
 def proofing(request):
-
 	result = Proof.objects.all().order_by('-id')
 	return render(request,'proof.html',{'result':result})
 

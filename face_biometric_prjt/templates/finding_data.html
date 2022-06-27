@@ -13,6 +13,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
       <style>
+      table tr:nth-child(even) {
+    background-color: RGB(62, 60, 60) !important;
+}
   #id_gender
   {
       margin-left: 12px;
@@ -66,7 +69,7 @@ table tr:nth-child(even){
 }
 
 th {
-  background: #333;
+
   color: #fff;
 }
 
@@ -260,16 +263,17 @@ display:flex;
           </div>
     </div>
     </div>
-    <table  class="table table-hover table-responsive table-bordered  "  id= "table-id">
+    <table  class="table table-responsive table-bordered  table-hover"  id= "table-id">
 
 
 <thead>
                       <tr>
 
-                         <th class="text-white">Name</th>
+                         <th class="text-white ">Name</th>
                          <th class="text-white">Gender</th>
+                         <th class="text-white">Timestamp</th>
+                         <th class="text-white">Image</th>
 
-                          <th class="text-white">Image</th>
 
 	                  </tr>
   </thead>
@@ -278,19 +282,15 @@ display:flex;
 <tbody>
          {% for det in result %}
 	     <tr>
-             <td class=" text-white">{{det.name}}</td>
-             <td class=" text-white"> {{det.gender}}</td>
+             <td class=" text-white">{{det.emp_id}}</td>
+             <td class=" text-white"> {{det.emp_id.gender}}</td>
+             <td class=" text-white"> {{det.time_stamp}}</td>
              <td class="text-white">
-                 {% if det.photo == '' %}
-                 <a href="{% static 'img/noimg.png' %}" data-source="ensure.png" class="with-caption image-link" title="The caption">
-                 <img src="{% static 'img/noimg.png' %}" height="100" style="margin-bottom: 5px;">
-                     {% else %}</a>
-                 <a href="{{ det.photo.url }}" data-source="ensure.png" class="with-caption image-link" title="The caption">
-                 <img src="{{ det.photo.url }}" height="100" style="margin-bottom: 5px;">
-                 {% endif %}
+                         <a href="{{ det.emp_id.photo.url }}" data-source="ensure.png" class="with-caption image-link" title="The caption">
+                         <img src="{{ det.emp_id.photo.url }}" height="100" style="margin-bottom: 5px;">
 
-                 </a>
-             </td>
+                             </a>
+                         </td>
          </tr>
          {% endfor %}
 
