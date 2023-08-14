@@ -21,7 +21,8 @@ The Live Face Monitoring & Recognition Web App for Crime Prevention leverages th
 
 ## Objective
 
-Create a Web App used for detecting people  Name. So this web app helps for detecting theifs and criminals.
+
+The objective of this project is to develop a robust Live Face Monitoring & Recognition Web App that utilizes surveillance camera feeds to effectively prevent and manage criminal activities. The web app will employ advanced facial recognition technology to continuously analyze live video streams, identify individuals in real-time, and compare them against a database of known offenders. By promptly detecting and alerting security personnel about suspicious or unauthorized individuals, the system aims to enhance crime prevention measures, strengthen public safety, and provide a user-friendly interface for efficient monitoring and response.
 
 ## Steps and tasks
 1. Make model by using Face-Recognition Library 
