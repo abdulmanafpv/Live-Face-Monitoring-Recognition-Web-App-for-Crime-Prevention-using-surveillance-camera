@@ -30,8 +30,7 @@ The objective of this project is to develop a robust Live Face Monitoring & Reco
 
 ## Contents
 
-
-This is a Face Biometric Web App used for Catching thieves and criminals.
+The "Live Face Monitoring & Recognition Web App for Crime Prevention using surveillance camera" topic encompasses the development of a cutting-edge web application aimed at enhancing crime prevention through real-time face monitoring and recognition using surveillance camera feeds. This innovative system leverages advanced facial recognition algorithms to analyze live video streams from cameras placed in strategic locations. The web app enables law enforcement agencies and security personnel to actively monitor and identify individuals within the camera's field of view, comparing their facial features against a database of known persons of interest. By providing instant alerts and notifications when a match is detected, the application empowers proactive intervention, timely response, and effective crime prevention. The integration of live face monitoring and recognition into a web-based platform signifies a significant advancement in leveraging technology for public safety, potentially deterring criminal activities and promoting community security.
 
 ## For making Web App.
 
