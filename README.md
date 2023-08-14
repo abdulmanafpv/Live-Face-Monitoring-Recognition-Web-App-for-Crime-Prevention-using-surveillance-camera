@@ -3,7 +3,7 @@
 
 ## About
 
-This is a Face Biometric Web App used for Catching thieves and criminals.
+The Live Face Monitoring & Recognition Web App for Crime Prevention leverages the capabilities of surveillance cameras to create a powerful tool in enhancing public safety. By employing advanced facial recognition technology, this web application continuously analyses live camera feeds, identifying individuals in real-time and cross-referencing their faces with a comprehensive database of known criminals or persons of interest. 
 
 ## Images
 ![Screenshot (123)](https://user-images.githubusercontent.com/84491967/175896459-550c9778-49d6-4b33-baa5-7e73f817bece.png)
